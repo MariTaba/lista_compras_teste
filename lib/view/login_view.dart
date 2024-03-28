@@ -25,7 +25,6 @@ class _LoginViewState extends State<LoginView> {
                 key: formKey,
                 child: Column(children: [
                   SizedBox(height: 30),
-
                   TextFormField(
                     controller: txtValor1,
                     style: TextStyle(fontSize: 32),
@@ -69,20 +68,6 @@ class _LoginViewState extends State<LoginView> {
                     },
                   ),
                   SizedBox(height: 30),
-                  //
-                  // BOTÃO
-                  //
-                  //ElevatedButton, OutlinedButton, TextButton
-                  OutlinedButton(
-                    child: {
-
-                    },
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          'cadastro',
-                        );
-                      })
                 ]))));
   }
 }
