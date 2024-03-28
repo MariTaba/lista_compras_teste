@@ -12,7 +12,6 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   var formKey = GlobalKey<FormState>();
 
-  //Controladores dos Campos de Texto
   var txtValor1 = TextEditingController();
   var txtValor2 = TextEditingController();
 
@@ -32,18 +31,12 @@ class _LoginViewState extends State<LoginView> {
                       labelText: 'Email',
                       border: OutlineInputBorder(),
                     ),
-                    //
-                    // VALIDAÇÃO
-                    //
                     validator: (value) {
                       if (value == null) {
                         return 'Informe o email';
                       } else if (value.isEmpty) {
                         return 'Informe o email';
-                      } else if (double.tryParse(value) == null) {
-                        return 'Informe um valor NUMÉRICO';
                       }
-                      //Retornar null significa sucesso na validação
                       return null;
                     },
                   ),
@@ -60,14 +53,46 @@ class _LoginViewState extends State<LoginView> {
                         return 'Informe sua senha';
                       } else if (value.isEmpty) {
                         return 'Informe sua senha';
-                      } else if (double.tryParse(value) == null) {
-                        return 'Informe um valor NUMÉRICO';
                       }
-                      //Retornar null significa sucesso na validação
                       return null;
                     },
                   ),
                   SizedBox(height: 30),
+                  OutlinedButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        Navigator.pushNamed(
+                          context,
+                          'cadastro',
+                        );
+                      }
+                    },
+                    child: Text('Login'),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        'cadastro',
+                      );
+                    },
+                    child: Text('Cadastro'),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        'esquecer_senha',
+                      );
+                    },
+                    child: Text('Esqueceu a senha?'),
+                  )
                 ]))));
   }
 }

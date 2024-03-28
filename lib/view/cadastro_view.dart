@@ -10,35 +10,66 @@ class CadastroView extends StatefulWidget {
 }
 
 class _CadastroViewState extends State<CadastroView> {
+  var formKey = GlobalKey<FormState>();
+  var txtValor1 = TextEditingController();
+  var txtValor2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tela 1'),
-      ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            OutlinedButton(
-              onPressed: () {
-                //
-                // Navegação
-                //
-
-                var nome = 'João da Silva';
-
-                Navigator.pushNamed(
-                  context,
-                  't2',
-                  arguments: nome,
-                );
-              },
-              child: Text('abrir'),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text('Cadastre-se'),
         ),
-      ),
-    );
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
+          child: Form(
+            key: formKey,
+            child: Column(children: [
+              SizedBox(height: 30),
+              TextFormField(
+                controller: txtValor1,
+                style: TextStyle(fontSize: 32),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null) {
+                    return 'Informe o email';
+                  } else if (value.isEmpty) {
+                    return 'Informe o email';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 30),
+              TextFormField(
+                controller: txtValor2,
+                style: TextStyle(fontSize: 32),
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null) {
+                    return 'Informe sua senha';
+                  } else if (value.isEmpty) {
+                    return 'Informe sua senha';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 30,),
+              OutlinedButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text('Confirmar'),
+              ),
+            ]),
+          ),
+        ));
   }
 }
