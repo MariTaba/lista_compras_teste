@@ -63,7 +63,7 @@ class _CadastroViewState extends State<CadastroView> {
               OutlinedButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, 'lista');
                   }
                 },
                 child: Text('Confirmar'),

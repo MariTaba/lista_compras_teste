@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                       if (formKey.currentState!.validate()) {
                         Navigator.pushNamed(
                           context,
-                          'cadastro',
+                          'lista',
                         );
                       }
                     },
@@ -92,6 +92,18 @@ class _LoginViewState extends State<LoginView> {
                       );
                     },
                     child: Text('Esqueceu a senha?'),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        'sobre',
+                      );
+                    },
+                    child: Text('Sobre aplicativo'),
                   )
                 ]))));
   }

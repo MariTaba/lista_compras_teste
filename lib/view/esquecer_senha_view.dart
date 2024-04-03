@@ -10,35 +10,88 @@ class EsquecerSenhaView extends StatefulWidget {
 }
 
 class _EsquecerSenhaViewState extends State<EsquecerSenhaView> {
+  var formKey = GlobalKey<FormState>();
+  var txtValor1 = TextEditingController();
+  var txtValor2 = TextEditingController();
+  var txtValor3 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-
-    final nome = ModalRoute.of(context)!.settings.arguments;
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tela 2 ${nome ?? ''}'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('voltar'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 't3');
-              },
-              child: Text('abrir'),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text("Recuperar senha"),
         ),
-      ),
-    );
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(50, 50, 50, 100),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: txtValor1,
+                  style: TextStyle(fontSize: 32),
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Informe o email';
+                    } else if (value.isEmpty) {
+                      return 'Informe o email';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: txtValor2,
+                  style: TextStyle(fontSize: 32),
+                  decoration: InputDecoration(
+                    labelText: 'Nova senha',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Informe a senha';
+                    } else if (value.isEmpty) {
+                      return 'Informe a senha';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 30),
+                TextFormField(
+                  controller: txtValor3,
+                  style: TextStyle(fontSize: 32),
+                  decoration: InputDecoration(
+                    labelText: 'Confirmar senha',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null) {
+                      return 'Informe a senha';
+                    } else if (value.isEmpty) {
+                      return 'Informe a senha';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Text('Confirmar'),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
