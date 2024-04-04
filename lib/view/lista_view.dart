@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:lista_compras/view/cadastro_view.dart';
-import 'package:lista_compras/view/sobre_view.dart';
+import 'package:flutter/widgets.dart';
 
 class ListaView extends StatefulWidget {
   const ListaView({super.key});
@@ -15,56 +14,26 @@ class _ListaViewState extends State<ListaView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Lista"),
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(50, 100, 50, 50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children:[
-            
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(20),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                height: 200,
+                child: GridView.count(
+                  scrollDirection: Axis.horizontal,
+                  crossAxisCount: 2,
+                  children: List.generate(50, (index) {
+                    return Container(
+                      child: Card(
+                        color: Colors.amber,
+                      ),
+                    );
+                  }),
                 ),
-                child: Icon(Icons.add),
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext bc) {
-                        return Container(
-                          child: Wrap(
-                            children: <Widget>[
-                              ListTile(
-                                leading: Icon(Icons.music_note),
-                                title: Text('Criar lista'),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CadastroView()));
-                                },
-                              ),
-                              ListTile(
-                                leading: Icon(Icons.videocam),
-                                title: Text('Vídeo'),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SobreView()));
-                                },
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                }),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
