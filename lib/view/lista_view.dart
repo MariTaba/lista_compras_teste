@@ -16,6 +16,8 @@ class _ListaViewState extends State<ListaView> {
 
   List<Compras> dados = [];
 
+  
+
   @override
   void initState() {
     dados = Compras.preencher();
@@ -38,7 +40,8 @@ class _ListaViewState extends State<ListaView> {
                 title: Text(dados[index].titulo),
 
                 onTap: (){
-                  Navigator.pushNamed(context, 'lc1');
+                  
+                  Navigator.pushNamed(context,'');
                 },
                 hoverColor: Colors.red.shade100,
 
