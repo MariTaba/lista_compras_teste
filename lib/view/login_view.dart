@@ -93,18 +93,6 @@ class _LoginViewState extends State<LoginView> {
                     },
                     child: Text('Esqueceu a senha?'),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        'sobre',
-                      );
-                    },
-                    child: Text('Sobre aplicativo'),
-                  )
                 ]))));
   }
 }
