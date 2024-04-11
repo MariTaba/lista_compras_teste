@@ -6,8 +6,7 @@ import 'package:lista_compras/view/sobre_view.dart';
 import 'view/cadastro_view.dart';
 import 'view/lista_view.dart';
 import 'view/login_view.dart';
-import 'view/lc1.dart';
-
+import 'view/shopping_view.dart';
 
 
 
@@ -35,7 +34,7 @@ class MainApp extends StatelessWidget {
         'esquecer_senha':(context) => EsquecerSenhaView(),
         'sobre':(context) => SobreView(),
         'lista':(context) => ListaView(),
-        'lc1': (context) => Lc1View(),
+        'shopping':(context) => ShoppingView(),
 
       },
     );
