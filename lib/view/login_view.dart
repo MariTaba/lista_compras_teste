@@ -22,77 +22,81 @@ class _LoginViewState extends State<LoginView> {
             padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
             child: Form(
                 key: formKey,
-                child: Column(children: [
-                  SizedBox(height: 30),
-                  TextFormField(
-                    controller: txtValor1,
-                    style: TextStyle(fontSize: 32),
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(),
+                child: Column(
+                  children: [
+                    SizedBox(height: 30),
+                    TextFormField(
+                      controller: txtValor1,
+                      style: TextStyle(fontSize: 32),
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        border: OutlineInputBorder(),
+                      ),
+                      validator: (value) {
+                        if (value == null) {
+                          return 'Informe o email';
+                        } else if (value.isEmpty) {
+                          return 'Informe o email';
+                        }
+                        return null;
+                      },
                     ),
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Informe o email';
-                      } else if (value.isEmpty) {
-                        return 'Informe o email';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 30),
-                  TextFormField(
-                    controller: txtValor2,
-                    style: TextStyle(fontSize: 32),
-                    decoration: InputDecoration(
-                      labelText: 'Senha',
-                      border: OutlineInputBorder(),
+                    SizedBox(height: 30),
+                    TextFormField(
+                      controller: txtValor2,
+                      style: TextStyle(fontSize: 32),
+                      decoration: InputDecoration(
+                        labelText: 'Senha',
+                        border: OutlineInputBorder(),
+                      ),
+                      validator: (value) {
+                        if (value == null) {
+                          return 'Informe sua senha';
+                        } else if (value.isEmpty) {
+                          return 'Informe sua senha';
+                        }
+                        return null;
+                      },
                     ),
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Informe sua senha';
-                      } else if (value.isEmpty) {
-                        return 'Informe sua senha';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 30),
-                  OutlinedButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
+                    SizedBox(height: 30),
+                    OutlinedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          Navigator.pushNamed(
+                            context,
+                            'lista',
+                          );
+                        }
+                      },
+                      child: Text('Login'),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    OutlinedButton(
+                      onPressed: () {
                         Navigator.pushNamed(
                           context,
-                          'lista',
+                          'cadastro',
                         );
-                      }
-                    },
-                    child: Text('Login'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        'cadastro',
-                      );
-                    },
-                    child: Text('Cadastro'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        'esquecer_senha',
-                      );
-                    },
-                    child: Text('Esqueceu a senha?'),
-                  ),
-                ]))));
+                      },
+                      child: Text('Cadastro'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          'esquecer_senha',
+                        );
+                      },
+                      child: Text(
+                        'Esqueceu a senha?',
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ))));
   }
 }

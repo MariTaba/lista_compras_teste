@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:lista_compras/view/cl_view.dart';
+import 'package:lista_compras/view/sobre_view.dart';
 
 int lstindex = 0;
 
@@ -24,14 +26,46 @@ class _ListaViewState extends State<ListaView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Compras',
-          style: TextStyle(
-            color: Colors.yellow,
+      appBar: AppBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, 'criar_lista');
+              break;
+            case 1:
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Sobre'),
+                    content: Text('Your pop-up card content goes here.'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text('Close'),
+                      ),
+                    ],
+                  );
+                },
+              );
+              break;
+            default:
+              break;
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Criar Lista',
           ),
-        ),
-        backgroundColor: Colors.blue.shade900,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info_outline),
+            label: 'Sobre',
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -46,7 +80,6 @@ class _ListaViewState extends State<ListaView> {
                   Navigator.pushNamed(context, 'shopping',
                       arguments: shoppingLists[index]);
                 },
-                hoverColor: Colors.red.shade100,
                 onLongPress: () {
                   setState(() {});
                 },
