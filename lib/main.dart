@@ -7,6 +7,7 @@ import 'view/cadastro_view.dart';
 import 'view/lista_view.dart';
 import 'view/login_view.dart';
 import 'view/shopping_view.dart';
+import 'view/cl_view.dart';
 
 
 
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
         'sobre':(context) => SobreView(),
         'lista':(context) => ListaView(),
         'shopping':(context) => ShoppingView(),
+        'criar_lista':(context) => ClView(),
 
       },
     );
