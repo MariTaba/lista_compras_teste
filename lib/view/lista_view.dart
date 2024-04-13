@@ -40,6 +40,7 @@ class _ListaViewState extends State<ListaView> {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
+                
                 title: Text(shoppingLists[index]),
                 onTap: () {
                   lstindex = index;
