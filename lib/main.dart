@@ -2,12 +2,11 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:lista_compras/view/esquecer_senha_view.dart';
-import 'package:lista_compras/view/sobre_view.dart';
 import 'view/cadastro_view.dart';
 import 'view/lista_view.dart';
 import 'view/login_view.dart';
 import 'view/shopping_view.dart';
-import 'view/cl_view.dart';
+
 
 
 
@@ -33,10 +32,8 @@ class MainApp extends StatelessWidget {
         'login': (context) => LoginView(),
         'cadastro':(context) =>CadastroView(),
         'esquecer_senha':(context) => EsquecerSenhaView(),
-        'sobre':(context) => SobreView(),
         'lista':(context) => ListaView(),
         'shopping':(context) => ShoppingView(),
-        'criar_lista':(context) => ClView(),
 
       },
     );

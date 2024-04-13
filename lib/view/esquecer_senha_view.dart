@@ -12,8 +12,8 @@ class EsquecerSenhaView extends StatefulWidget {
 class _EsquecerSenhaViewState extends State<EsquecerSenhaView> {
   var formKey = GlobalKey<FormState>();
   var txtValor1 = TextEditingController();
-  var txtValor2 = TextEditingController();
-  var txtValor3 = TextEditingController();
+  var txtsenha = TextEditingController();
+  var txtsenha1 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _EsquecerSenhaViewState extends State<EsquecerSenhaView> {
           title: Text("Recuperar senha"),
         ),
         body: Padding(
-          padding: EdgeInsets.fromLTRB(50, 50, 50, 100),
+          padding: EdgeInsets.all(20),
           child: Form(
             key: formKey,
             child: Column(
@@ -30,7 +30,6 @@ class _EsquecerSenhaViewState extends State<EsquecerSenhaView> {
                 SizedBox(height: 30),
                 TextFormField(
                   controller: txtValor1,
-                  style: TextStyle(fontSize: 32),
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(),
@@ -45,39 +44,38 @@ class _EsquecerSenhaViewState extends State<EsquecerSenhaView> {
                   },
                 ),
                 SizedBox(height: 30),
-                TextFormField(
-                  controller: txtValor2,
-                  style: TextStyle(fontSize: 32),
-                  decoration: InputDecoration(
-                    labelText: 'Nova senha',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Informe a senha';
-                    } else if (value.isEmpty) {
-                      return 'Informe a senha';
-                    }
-                    return null;
-                  },
+              TextFormField(
+                controller: txtsenha,
+                decoration: InputDecoration(
+                  labelText: 'Senha',
+                  border: OutlineInputBorder(),
                 ),
-                SizedBox(height: 30),
-                TextFormField(
-                  controller: txtValor3,
-                  style: TextStyle(fontSize: 32),
-                  decoration: InputDecoration(
-                    labelText: 'Confirmar senha',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Informe a senha';
-                    } else if (value.isEmpty) {
-                      return 'Informe a senha';
-                    }
-                    return null;
-                  },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Digite a senha';
+                  }
+                  return null;
+                },
+                obscureText: true,
+              ),
+              SizedBox(height: 30),
+              TextFormField(
+                controller: txtsenha1,
+                decoration: InputDecoration(
+                  labelText: 'Confirmar senha',
+                  border: OutlineInputBorder(),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Confirme a senha';
+                  }
+                  if (value != txtsenha.text) {
+                    return 'As senhas não coincidem';
+                  }
+                  return null;
+                },
+                obscureText: true,
+              ),
                 SizedBox(
                   height: 30,
                 ),
