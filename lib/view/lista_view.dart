@@ -44,7 +44,7 @@ class _ListaViewState extends State<ListaView> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: Text('Sobre'),
-                      content: Text('Your pop-up card content goes here.'),
+                      content: Text('Aplicativo de lista de compras para ajudar usuários a gerenciar listas de forma eficiente.\nDesenvolvido por Mariana Nakamura Taba'),
                       actions: [
                         TextButton(
                           onPressed: () {
